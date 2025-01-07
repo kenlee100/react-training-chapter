@@ -6,3 +6,5 @@ cd week2
 npm i
 npm run dev
 ```
+
+[demo](https://kenlee100.github.io/react-training-chapter/)
