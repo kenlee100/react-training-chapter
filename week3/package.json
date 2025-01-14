@@ -1,6 +1,6 @@
 {
   "name": "react-training-chapter",
-  "homepage": "https://kenlee100.github.io/react-training-chapter/week2",
+  "homepage": "https://kenlee100.github.io/react-training-chapter/week3",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +9,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "vite build && gh-pages -d dist -e week2"
+    "deploy": "vite build && gh-pages -d dist -e week3"
   },
   "dependencies": {
     "axios": "^1.7.9",
