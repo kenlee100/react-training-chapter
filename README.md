@@ -1,4 +1,6 @@
 # React 直播班 每週任務
+
+#### 啟動專案
 進入各週目錄下安裝 npm 套件，然後啟動專案
 
 ```
@@ -7,4 +9,14 @@ npm i
 npm run dev
 ```
 
-[demo](https://kenlee100.github.io/react-training-chapter/)
+#### 部署
+進入各週目錄下部署專案
+```
+cd week2
+npm run deploy
+```
+
+#### 各週 demo
+- [week2](https://kenlee100.github.io/react-training-chapter/week2)
+
+- [week3](https://kenlee100.github.io/react-training-chapter/week3)
