@@ -35,7 +35,7 @@ function App() {
       const { token, expired } = res;
       document.cookie = `hexToken=${token}; expires=${new Date(expired)};`;
       getProductsData();
-      setIsAuth(true);
+      checkLogin()
     } catch (error) {
       console.error(error);
     }
@@ -156,11 +156,11 @@ function App() {
                       </div>
                       <h5 className="mt-3">更多圖片：</h5>
                       {
-                        <div className="d-flex flex-wrap grid gap-2">
-                          {tempProduct.imagesUrl?.map((tempImg) => {
+                        <div className="d-flex flex-wrap gap-2">
+                          {tempProduct.imagesUrl?.map((tempImg, index) => {
                             return (
                               <img
-                                key={tempImg}
+                                key={index}
                                 src={tempImg}
                                 className="thumbnail img-fluid object-fit-cover"
                               />
