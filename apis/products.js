@@ -13,7 +13,6 @@ export function productApis(request) {
     //     method: "get",
     //   }),
     addProducts: (data) => {
-      console.log('add addProducts', data)
       return request({
         url: `/api/${VITE_PATH}/admin/product`,
         method: "post",
@@ -23,7 +22,6 @@ export function productApis(request) {
       ,
 
     updateProduct: (data, id) => {
-      console.log('update updateProduct', data, id)
       return request({
         url: `/api/${VITE_PATH}/admin/product/${id}`,
         method: "put",

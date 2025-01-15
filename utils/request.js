@@ -34,11 +34,14 @@ export function createRequestInstance(axios) {
         }
       } = error
       switch (status) {
+        case 400:
         case 401:
         case 404:
           console.error(message)
+          alert(message)
           break
         default:
+          console.log(error);
       }
       return Promise.reject(error)
     }

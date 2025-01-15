@@ -21,7 +21,7 @@ function App() {
   const { getProducts, addProducts, updateProduct, deleteProduct } =
     productApis(request);
   const [isLoading, setIsLoading] = useState(true);
-  const { isAuth, setIsAuth, verifyAuth } = useAuth(
+  const { isAuth, verifyAuth } = useAuth(
     checkUserLogin,
     setIsLoading
   );
@@ -55,7 +55,7 @@ function App() {
       getProductsData();
     }
   }, [isAuth]);
-  
+
   useEffect(() => {
     if (productModalRef.current) {
       productModalEl.current = new Modal(productModalRef.current, {
@@ -122,7 +122,7 @@ function App() {
       unit: product?.unit || "",
       imagesUrl: product?.imagesUrl || [],
     });
-    
+
     productModalEl.current.show();
     setModalType(type);
   }
@@ -162,17 +162,16 @@ function App() {
       switch (modalType) {
         case "edit":
           response = await callApi[modalType](productData, productData.data.id);
-          console.log(response?.message);
+          alert(response?.message);
           break;
         case "new":
           productData.data.imageUrl = placeholderImage;
           response = await callApi[modalType](productData);
-          console.log(response?.message);
+          alert(response?.message);
           break;
         case "delete":
           productData.data.imageUrl = placeholderImage;
-          response = await callApi[modalType](productData.data.id);
-          console.log(response?.message);
+          await callApi[modalType](productData.data.id);
           break;
       }
       await getProductsData();
@@ -189,8 +188,7 @@ function App() {
     try {
       const res = await deleteProduct(id);
       const { message } = res;
-      console.log(message);
-      await getProductsData();
+      alert(message);
     } catch (error) {
       console.error(error);
     } finally {
@@ -229,8 +227,6 @@ function App() {
       {isAuth ? (
         <>
           <div className="container">
-            <div className="py-3">
-            </div>
             <div className="mt-3">
               <div className="d-flex align-items-center justify-content-between">
                 <h2>產品列表</h2>
@@ -250,7 +246,7 @@ function App() {
                     <th>原價</th>
                     <th>售價</th>
                     <th>是否啟用</th>
-                    <th>查看細節</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
