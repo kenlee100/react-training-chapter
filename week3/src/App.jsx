@@ -6,42 +6,37 @@ import { productApis } from "@apis/products";
 
 import axios from "axios";
 import { Modal } from "bootstrap";
-
 import Loading from "@/components/Loading";
-
 import ProductModal from "@/components/ProductModal";
-
 import { useAuth } from "@/hooks/useAuth";
 
 const placeholderImage = "https://placehold.co/640x480?text=No+Photo";
+const productDefault = {
+  title: "",
+  imageUrl: "",
+  category: "",
+  description: "",
+  content: "",
+  origin_price: 0,
+  price: 0,
+  is_enabled: 0,
+  unit: "",
+  imagesUrl: [placeholderImage], // 預設值塞值，避免新增時傳到後端導致 imagesUrl 欄位消失
+};
+const request = createRequestInstance(axios);
+const { userLogin, checkUserLogin } = authApis(request);
+const { getProducts, addProducts, updateProduct, deleteProduct } =
+  productApis(request);
 
 function App() {
-  const request = createRequestInstance(axios);
-  const { userLogin, checkUserLogin } = authApis(request);
-  const { getProducts, addProducts, updateProduct, deleteProduct } =
-    productApis(request);
   const [isLoading, setIsLoading] = useState(true);
-  const { isAuth, verifyAuth } = useAuth(
-    checkUserLogin,
-    setIsLoading
-  );
+  const { isAuth, verifyAuth } = useAuth(checkUserLogin, setIsLoading);
 
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
-  const productDefault = {
-    title: "",
-    imageUrl: "",
-    category: "",
-    description: "",
-    content: "",
-    origin_price: 0,
-    price: 0,
-    is_enabled: 0,
-    unit: "",
-    imagesUrl: [],
-  };
+
   const [tempProduct, setTempProduct] = useState(productDefault);
 
   const [products, setProducts] = useState([]);
@@ -120,7 +115,7 @@ function App() {
       price: parseInt(product?.price) || 0,
       is_enabled: product?.is_enabled || 0,
       unit: product?.unit || "",
-      imagesUrl: product?.imagesUrl || [],
+      imagesUrl: product?.imagesUrl || [placeholderImage], // 預設值塞值，避免新增時傳到後端導致 imagesUrl 欄位消失
     });
 
     productModalEl.current.show();
