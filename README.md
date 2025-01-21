@@ -20,3 +20,5 @@ npm run deploy
 - [week2](https://kenlee100.github.io/react-training-chapter/week2)
 
 - [week3](https://kenlee100.github.io/react-training-chapter/week3)
+
+- [week4](https://kenlee100.github.io/react-training-chapter/week4)
