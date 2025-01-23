@@ -4,7 +4,8 @@ import axios from "axios";
 import { createRequestInstance } from "@utils/request";
 import { productApis } from "@apis/products";
 const request = createRequestInstance(axios);
-const { uploadImage } = productApis(request);
+const { addProducts, updateProduct, deleteProduct, uploadImage } =
+  productApis(request);
 
 function ProductModalComponent(
   {
@@ -14,9 +15,6 @@ function ProductModalComponent(
     getProductsData,
     placeholderImage,
     setIsLoading,
-    deleteProductData,
-    addProducts,
-    updateProduct,
   },
   ref
 ) {
@@ -64,6 +62,19 @@ function ProductModalComponent(
         page: 1,
       });
       closeProductModal();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function deleteProductData(id) {
+    setIsLoading(true);
+    try {
+      const res = await deleteProduct(id);
+      const { message } = res;
+      alert(message);
     } catch (error) {
       console.error(error);
     } finally {
@@ -192,7 +203,7 @@ function ProductModalComponent(
                             className="form-control rounded-bottom-0 rounded-top-0"
                             type="file"
                             name="main"
-                            accept="image/*"
+                            accept=".jpg,.jpeg,.png"
                             onChange={(e) => handleFileChange(e, "main")}
                             placeholder="上傳主要圖片"
                           />
@@ -226,6 +237,7 @@ function ProductModalComponent(
                               <input
                                 className="form-control rounded-bottom-0 rounded-top-0"
                                 type="file"
+                                accept=".jpg,.jpeg,.png"
                                 name={`multi-${index + 1}`}
                                 onChange={(e) =>
                                   handleFileChange(e, "multi", index)
@@ -422,10 +434,7 @@ ProductModalComponent.propTypes = {
   closeProductModal: PropTypes,
   modalType: PropTypes.oneOf(["edit", "new", "delete"]),
   getProductsData: PropTypes.func,
-  addProducts: PropTypes.func,
   setIsLoading: PropTypes.func,
-  updateProduct: PropTypes.func,
-  deleteProductData: PropTypes.func,
 };
 
 export default ProductModal;

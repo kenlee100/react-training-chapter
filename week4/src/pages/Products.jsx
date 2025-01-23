@@ -17,8 +17,7 @@ const placeholderImage = "https://placehold.co/640x480?text=No+Photo";
 
 const request = createRequestInstance(axios);
 const { checkUserLogin } = authApis(request);
-const { getProducts, addProducts, updateProduct, deleteProduct } =
-  productApis(request);
+const { getProducts } = productApis(request);
 const productDefault = {
   title: "",
   imageUrl: "",
@@ -91,18 +90,18 @@ function ProductsPage() {
     setTempProduct(productDefault);
   }, []);
 
-  const deleteProductData = useCallback(async function (id) {
-    setIsLoading(true);
-    try {
-      const res = await deleteProduct(id);
-      const { message } = res;
-      alert(message);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
+  // const deleteProductData = useCallback(async function (id) {
+  //   setIsLoading(true);
+  //   try {
+  //     const res = await deleteProduct(id);
+  //     const { message } = res;
+  //     alert(message);
+  //   } catch (error) {
+  //     console.error(error);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // }, []);
 
   const getProductsData = useCallback(async function (params) {
     setIsLoading(true);
@@ -145,9 +144,6 @@ function ProductsPage() {
         modalType={modalType}
         placeholderImage={placeholderImage}
         getProductsData={getProductsData}
-        updateProduct={updateProduct}
-        addProducts={addProducts}
-        deleteProductData={deleteProductData}
         setIsLoading={setIsLoading}
       />
       <Loading isLoading={isLoading} />
