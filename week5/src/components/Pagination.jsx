@@ -1,4 +1,3 @@
-import { memo } from "react";
 import PropTypes from "prop-types";
 
 Pagination.propTypes = {
@@ -59,4 +58,4 @@ function Pagination({ pageInfo, changePage }) {
   );
 }
 
-export default memo(Pagination);
+export default Pagination;

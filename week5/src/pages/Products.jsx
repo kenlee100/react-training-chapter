@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback, memo } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 import axios from "axios";
 import { createRequestInstance } from "@utils/request";
@@ -155,4 +155,4 @@ function ProductsPage() {
   );
 }
 
-export default memo(ProductsPage);
+export default ProductsPage;
