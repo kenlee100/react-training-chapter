@@ -1,6 +1,6 @@
 const { VITE_PATH } = import.meta.env;
 
-export function orderApis(request) {
+export function userOrderApis(request) {
   return {
     sendOrder: (data) =>
       request({

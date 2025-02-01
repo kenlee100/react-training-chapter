@@ -1,6 +1,6 @@
 
 const { VITE_PATH } = import.meta.env;
-export function cartApis(request) {
+export function userCartApis(request) {
     return {
       addToCart: (data) => {
         return request({

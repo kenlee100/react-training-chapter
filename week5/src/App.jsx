@@ -6,8 +6,8 @@ import { useForm } from "react-hook-form";
 
 import { createRequestInstance } from "@utils/request";
 import { userProductApis } from "@apis/userProducts";
-import { cartApis } from "@apis/cart";
-import { orderApis } from "@apis/order";
+import { userCartApis } from "@apis/userCart";
+import { userOrderApis } from "@apis/userOrder";
 
 import ReactLoading from "react-loading";
 import Pagination from "@/components/Pagination";
@@ -18,8 +18,8 @@ const request = createRequestInstance(axios);
 
 const { getProducts } = userProductApis(request);
 const { addToCart, getCart, deleteCartItem, deleteAllCart, updateCartItem } =
-  cartApis(request);
-const { sendOrder } = orderApis(request);
+  userCartApis(request);
+const { sendOrder } = userOrderApis(request);
 
 const productDefault = {
   title: "",
