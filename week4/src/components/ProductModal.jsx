@@ -2,10 +2,10 @@ import { forwardRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { createRequestInstance } from "@utils/request";
-import { productApis } from "@apis/products";
+import { adminProducts } from "@apis/adminProducts";
 const request = createRequestInstance(axios);
 const { addProducts, updateProduct, deleteProduct, uploadImage } =
-  productApis(request);
+  adminProducts(request);
 
 function ProductModalComponent(
   {

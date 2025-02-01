@@ -1,5 +1,5 @@
 const { VITE_PATH } = import.meta.env;
-export function productApis(request) {
+export function adminProducts(request) {
   return {
     getProducts: (query) => {
       const searchParams = new URLSearchParams(query);

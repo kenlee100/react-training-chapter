@@ -3,7 +3,7 @@ import { useState, useEffect, useRef, useCallback, memo } from "react";
 import axios from "axios";
 import { createRequestInstance } from "@utils/request";
 import { authApis } from "@apis/auth";
-import { productApis } from "@apis/products";
+import { adminProducts } from "@apis/adminProducts";
 
 import { Modal } from "bootstrap";
 import Loading from "@/components/Loading";
@@ -17,7 +17,7 @@ const placeholderImage = "https://placehold.co/640x480?text=No+Photo";
 
 const request = createRequestInstance(axios);
 const { checkUserLogin } = authApis(request);
-const { getProducts } = productApis(request);
+const { getProducts } = adminProducts(request);
 const productDefault = {
   title: "",
   imageUrl: "",

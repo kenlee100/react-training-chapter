@@ -3,11 +3,11 @@ import { useState } from "react";
 import axios from "axios";
 import { createRequestInstance } from '@utils/request'; 
 import { authApis } from "@apis/auth";
-import { productApis } from "@apis/products";
+import { adminProducts } from "@apis/adminProducts";
 
 const request = createRequestInstance(axios);
 const { userLogin, checkUserLogin } = authApis(request);
-const { getProducts } = productApis(request);
+const { getProducts } = adminProducts(request);
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);

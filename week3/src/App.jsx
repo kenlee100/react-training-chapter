@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 import { createRequestInstance } from "@utils/request";
 import { authApis } from "@apis/auth";
-import { productApis } from "@apis/products";
+import { adminProducts } from "@apis/adminProducts";
 
 import axios from "axios";
 import { Modal } from "bootstrap";
@@ -26,7 +26,7 @@ const productDefault = {
 const request = createRequestInstance(axios);
 const { userLogin, checkUserLogin } = authApis(request);
 const { getProducts, addProducts, updateProduct, deleteProduct } =
-  productApis(request);
+  adminProducts(request);
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
