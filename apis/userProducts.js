@@ -8,5 +8,10 @@ export function userProductApis(request) {
         method: "get",
       });
     },
+    getProductItem: (id) =>
+      request({
+        url: `/api/${VITE_PATH}/product/${id}`,
+        method: "get",
+      }),
   };
 }
