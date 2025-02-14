@@ -8,5 +8,9 @@ export function userOrderApis(request) {
         method: "post",
         data,
       }),
+    getOrder: (orderId) =>
+      request({
+        url: `/api/${VITE_PATH}/order/${orderId}`,
+      }),
   };
 }

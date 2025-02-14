@@ -24,7 +24,7 @@ export function createRequestInstance(axios) {
   
   service.interceptors.response.use(
     (response) => {
-      return response.data
+      return response?.data
     },
     (error) => {
       const {
