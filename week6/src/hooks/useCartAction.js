@@ -11,9 +11,14 @@ const { addToCart } = userCartApis(request);
 
 // 自定義 Hook 管理購物車加入狀態
 function useCartAction() {
-  const { cartList, setCartList } = useContext(FrontLayoutContext);
+  const { cartList, setCartList, setIsLoading } =
+    useContext(FrontLayoutContext);
   const { getCartData } = useGetCartData(setCartList);
-  const { updateCartItemData } = useUpdateCart(getCartData);
+  const { updateCartItemData } = useUpdateCart(
+    getCartData,
+    cartList?.carts,
+    setIsLoading
+  );
   // 管理loading狀態的 Map
   const [cartLoadingStatus, setCartLoadingStatus] = useState([]);
 
@@ -63,13 +68,7 @@ function useCartAction() {
         stopLoading(data.product_id);
       }
     },
-    [
-      cartList,
-      updateCartItemData,
-      getCartData,
-      startLoading,
-      stopLoading,
-    ]
+    [cartList, updateCartItemData, getCartData, startLoading, stopLoading]
   );
 
   // 檢查特定商品是否正在讀取
@@ -79,7 +78,7 @@ function useCartAction() {
     },
     [cartLoadingStatus]
   );
-  
+
   const modifyCartList = cartList;
   return {
     handleAddToCart,
