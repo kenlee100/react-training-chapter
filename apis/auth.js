@@ -6,6 +6,11 @@ export function authApis(request) {
         method: "post",
         data,
       }),
+    userLogout: () =>
+      request({
+        url: "/logout",
+        method: "post",
+      }),
     checkUserLogin: () =>
       request({
         url: "/api/user/check",
