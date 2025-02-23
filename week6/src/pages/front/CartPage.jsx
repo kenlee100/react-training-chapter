@@ -19,7 +19,7 @@ export default function CartPage() {
 
   const { modifyCartList } = useCartAction();
   const { getCartData } = useGetCartData(setCartList);
-  const { updateCartItemData } = useUpdateCart(getCartData);
+  const { updateCartItemData } = useUpdateCart(getCartData, modifyCartList.carts, setIsLoading);
 
   async function deleteCartItemData(id, product) {
     if (window.confirm(`是否刪除 ${product.title} ?`)) {
