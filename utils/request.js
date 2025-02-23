@@ -38,7 +38,6 @@ export function createRequestInstance(axios) {
         case 401:
         case 404:
           console.error(message)
-          alert(message)
           break
         default:
           console.log(error);
