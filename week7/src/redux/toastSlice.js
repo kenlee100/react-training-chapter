@@ -22,5 +22,5 @@ export const toastSlice = createSlice({
   },
 });
 export const selectToast = (state) => state.toast.messages;
-export const { openToast, pushMessage, removeToast } = toastSlice.actions;
+export const { pushMessage, removeToast } = toastSlice.actions;
 export default toastSlice.reducer;
